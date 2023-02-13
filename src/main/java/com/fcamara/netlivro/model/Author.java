@@ -18,5 +18,9 @@ public class Author {
     @GeneratedValue
     private UUID id;
     private String name;
+    @OneToMany(
+            mappedBy="author", orphanRemoval = true
+    )
+    private List<Book> books;
 
 }
