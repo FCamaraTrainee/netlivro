@@ -1,8 +1,6 @@
 package com.fcamara.netlivro.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +16,7 @@ public class Author {
     @GeneratedValue
     private UUID id;
     private String name;
+    private Boolean active = true;
     @OneToMany(
             mappedBy="author", orphanRemoval = true
     )
