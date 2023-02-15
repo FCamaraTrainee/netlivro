@@ -11,5 +11,5 @@ import java.util.UUID;
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, UUID> {
   Optional<Author> findByIdAndActiveFalse(UUID uuid);
-  List<Author> findAllAndActiveFalse();
+  List<Author> findAllByActiveIsFalse();
 }
