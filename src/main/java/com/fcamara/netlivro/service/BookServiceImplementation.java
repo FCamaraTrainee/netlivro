@@ -19,11 +19,8 @@ public class BookServiceImplementation implements BookService {
 
     @Override
     public Book findBookById(UUID id) {
-        Optional<Book> book = bookRepository.findByIdAndActiveFalse(id);
-        if (!book.isPresent()) {
-            throw new RuntimeException("Book not found");
-        }
-        return book.get();
+        return bookRepository.findByIdAndActiveFalse(id).orElseThrow(() -> new RuntimeException("Book not found!"));
+
     }
 
     @Override
