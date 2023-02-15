@@ -16,6 +16,7 @@ public class Book {
     private Integer year;
     @ManyToOne
     private Author author;
+    private Boolean active = true;
     @ManyToMany
     private List<Category> categories = new ArrayList<>();
 
@@ -66,4 +67,11 @@ public class Book {
     public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
+    public Boolean getActive() {
+        return active;
+    }
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
 }
