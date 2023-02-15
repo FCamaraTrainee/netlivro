@@ -16,6 +16,6 @@ public interface BookRepository extends JpaRepository<Book, UUID> {
     Optional<Book> findByIdAndActiveFalse(UUID uuid);
     List<Book> findByAuthor(Author author);
     List<Book> findByCategoriesContaining(Category category);
-    @Query("SELECT Book FROM Book WHERE Book.year >= :startYear AND Book.year <= :endYear")
+    @Query("SELECT b FROM Book b WHERE b.year >= :startYear AND b.year <= :endYear")
     List<Book> findAllByYearIsBetween(Integer startYear, Integer endYear);
 }
