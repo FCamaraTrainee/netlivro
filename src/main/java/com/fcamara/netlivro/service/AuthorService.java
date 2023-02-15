@@ -9,5 +9,5 @@ public interface AuthorService {
   Author findAuthorById(UUID id);
   Author createAuthor(String name);
   void deleteAuthor(UUID id);
-  List<Author> findAll();
+  List<Author> findAllAndActiveFalse();
 }

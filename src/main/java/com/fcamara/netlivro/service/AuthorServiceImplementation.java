@@ -33,18 +33,13 @@ public class AuthorServiceImplementation implements AuthorService{
 
   @Override
   public void deleteAuthor(UUID id) {
-    Optional<Author> author = authorRepository.findById(id);
-    if(!author.isPresent()) {
-      throw new RuntimeException("Author not found");
-    }
-    author.ifPresent((author1) -> {
-      author1.setActive(false);
-      authorRepository.save(author1);
-    });
+    Author author = findAuthorById(id);
+    author.setActive(false);
+    authorRepository.save(author);
   }
 
   @Override
-  public List<Author> findAll() {
+  public List<Author> findAllAndActiveFalse() {
     List<Author> authors = authorRepository.findAll();
     authors.sort(Comparator.comparing(Author::getName));
     return authors;
