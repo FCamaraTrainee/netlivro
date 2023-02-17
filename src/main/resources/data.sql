@@ -1,11 +1,11 @@
 -- Table: public.author
-drop table book_categories;
+drop table if exists book_categories;
 
-drop table category;
+drop table if exists category;
 
-drop table book;
+drop table if exists book;
 
-drop table author;
+drop table if exists author;
 
 
 -- DROP TABLE IF EXISTS public.author;
@@ -87,16 +87,16 @@ ALTER TABLE IF EXISTS public.book_categories
 
 INSERT INTO author (id, name, active)
 VALUES
-    (gen_random_uuid(), 'Gabriel García Márquez', true),
+    (gen_random_uuid(), 'Gabriel García Márquez', false),
     (gen_random_uuid(), 'J.K. Rowling', true),
     (gen_random_uuid(), 'Haruki Murakami', true),
     (gen_random_uuid(), 'Clarice Lispector', true),
     (gen_random_uuid(), 'Neil Gaiman', true),
     (gen_random_uuid(), 'Stephen King', true),
     (gen_random_uuid(), 'Toni Morrison', true),
-    (gen_random_uuid(), 'Isabel Allende', true),
+    (gen_random_uuid(), 'Isabel Allende', false),
     (gen_random_uuid(), 'Jorge Luis Borges', true),
-    (gen_random_uuid(), 'Virginia Woolf', true);
+    (gen_random_uuid(), 'Virginia Woolf', false);
 
 INSERT INTO book (id, active, name, year, author_id)
 VALUES
