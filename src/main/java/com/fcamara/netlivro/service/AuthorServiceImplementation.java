@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class AuthorServiceImplementation implements AuthorService{
+public class AuthorServiceImplementation implements AuthorService {
   private final AuthorRepository authorRepository;
 
   public AuthorServiceImplementation(AuthorRepository authorRepository) {
@@ -17,9 +17,9 @@ public class AuthorServiceImplementation implements AuthorService{
 
   @Override
   public Author findAuthorById(UUID id) {
-    Optional<Author> author = authorRepository.findByIdAndActiveFalse(id);
+    Optional<Author> author = authorRepository.findByIdAndActiveTrue(id);
     if(!author.isPresent()) {
-      throw new RuntimeException("Author not found");
+      throw new IllegalArgumentException("Author not found");
     }
     return author.get();
   }
@@ -40,7 +40,7 @@ public class AuthorServiceImplementation implements AuthorService{
 
   @Override
   public List<Author> findAllAndActiveFalse() {
-    List<Author> authors = authorRepository.findAll();
+    List<Author> authors = authorRepository.findAllByActiveIsTrue();
     authors.sort(Comparator.comparing(Author::getName));
     return authors;
   }

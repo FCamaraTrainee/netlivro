@@ -87,8 +87,8 @@ ALTER TABLE IF EXISTS public.book_categories
 
 INSERT INTO author (id, name, active)
 VALUES
-    (gen_random_uuid(), 'Gabriel García Márquez', false),
-    (gen_random_uuid(), 'J.K. Rowling', true),
+    ('1d6486cd-4953-4da7-8ef5-ac2f4010e872', 'Gabriel García Márquez', false),
+    ('03f8763b-2298-405f-8f91-ee78751e1120', 'J.K. Rowling', true),
     (gen_random_uuid(), 'Haruki Murakami', true),
     (gen_random_uuid(), 'Clarice Lispector', true),
     (gen_random_uuid(), 'Neil Gaiman', true),
