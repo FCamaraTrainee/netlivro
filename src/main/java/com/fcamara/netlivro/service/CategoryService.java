@@ -10,4 +10,5 @@ public interface CategoryService {
     Category createCategory(Category category);
     void deleteCategory(UUID id);
     List<Category> findAll();
+    List<Category> saveAll(List<Category> categories);
 }

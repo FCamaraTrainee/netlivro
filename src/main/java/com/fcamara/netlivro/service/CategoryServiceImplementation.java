@@ -45,4 +45,9 @@ public class CategoryServiceImplementation implements CategoryService {
     public List<Category> findAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Category> saveAll(List<Category> categories) {
+        return repository.saveAll(categories);
+    }
 }
