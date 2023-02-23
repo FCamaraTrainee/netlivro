@@ -4,6 +4,7 @@ import com.fcamara.netlivro.model.Author;
 import com.fcamara.netlivro.repository.AuthorRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -38,14 +39,20 @@ class AuthorServiceImplementationTest {
     }
 
     @Test
-    void ShouldSortList() {
-        List<Author> authorList = Arrays.asList(
-                new Author("zNome 1"),
-                new Author("Nome 1")
-        );
-        Mockito.when(authorRepository.findAllByActiveIsTrue())
-                .thenReturn(authorList);
-
+    void ShouldCallMethodToLisAllAuthors() {
+        authorService.findAllAndActiveFalse();
+        Mockito.verify(authorRepository, Mockito.times(1)).findAllByActiveIsTrue();
     }
 
+    @Test
+    void ShouldCallMethodWithGivenArguments() {
+        String authorName = "Nome";
+
+        authorService.createAuthor(authorName);
+        ArgumentCaptor<Author> argument = ArgumentCaptor.forClass(Author.class);
+
+        Mockito.verify(authorRepository).save(argument.capture());
+
+        assertEquals(authorName, argument.getValue().getName());
+    }
 }
