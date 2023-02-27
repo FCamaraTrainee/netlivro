@@ -4,6 +4,7 @@ import com.fcamara.netlivro.model.Category;
 import com.fcamara.netlivro.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

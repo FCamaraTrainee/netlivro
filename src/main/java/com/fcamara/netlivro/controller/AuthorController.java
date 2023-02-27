@@ -3,6 +3,7 @@ package com.fcamara.netlivro.controller;
 import com.fcamara.netlivro.model.Author;
 import com.fcamara.netlivro.service.AuthorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,14 +11,16 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(name = "/v1/api/author")
+@RequestMapping("/v1/api/author")
 @RequiredArgsConstructor
 public class AuthorController {
   private final AuthorService authorService;
 
   @PostMapping("/save-author")
-  private ResponseEntity<Author> createAuthor(@RequestBody String author) {
-    Author response = authorService.createAuthor(author);
+  private ResponseEntity<Author> createAuthor(@RequestBody Author author) {
+
+
+    Author response = authorService.createAuthor(author.getName());
     return ResponseEntity.ok(response);
   }
 
