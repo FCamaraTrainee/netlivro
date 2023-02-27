@@ -39,7 +39,7 @@ public class AuthorServiceImplementation implements AuthorService {
   }
 
   @Override
-  public List<Author> findAllAndActiveFalse() {
+  public List<Author> findAllAndActiveTrue() {
     List<Author> authors = authorRepository.findAllByActiveIsTrue();
     authors.sort(Comparator.comparing(Author::getName));
     return authors;

@@ -36,7 +36,7 @@ public class AuthorController {
 
   @GetMapping("/find-all")
   public ResponseEntity<List<Author>> findAllAuthor() {
-    List<Author> allAuthors = authorService.findAllAndActiveFalse();
+    List<Author> allAuthors = authorService.findAllAndActiveTrue();
     return ResponseEntity.ok(allAuthors);
   }
 }
