@@ -1,10 +1,9 @@
 package com.fcamara.netlivro.controller;
 
-import com.fcamara.netlivro.exception.IllegalAuthorNameException;
+import com.fcamara.netlivro.exception.IllegalAuthorException;
 import com.fcamara.netlivro.model.Author;
 import com.fcamara.netlivro.service.AuthorService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +19,18 @@ public class AuthorController {
   @PostMapping("/save-author")
   private ResponseEntity<Author> createAuthor(@RequestBody Author author) {
 
-    if (author.getName() == null) throw new IllegalAuthorNameException("Name must not be null");
+    if (author.getName() == null) throw new IllegalAuthorException("Name must not be null");
 
-    Author response = authorService.createAuthor(author.getName());
+    Author response = authorService.saveAuthor(author);
+    return ResponseEntity.ok(response);
+  }
+
+  @PutMapping("/edit-author")
+  private ResponseEntity<Author> editAuthor(@RequestBody Author author) {
+
+    if (author.getId() == null) throw new IllegalAuthorException("Id must not be null");
+
+    Author response = authorService.saveAuthor(author);
     return ResponseEntity.ok(response);
   }
 

@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface AuthorService {
   Author findAuthorById(UUID id);
-  Author createAuthor(String name);
+  Author saveAuthor(Author author);
   void deleteAuthor(UUID id);
   List<Author> findAllAndActiveTrue();
 }

@@ -41,8 +41,10 @@ class AuthorServiceImplementationTest {
     @Test
     void ShouldCallMethodWithGivenArguments() {
         String authorName = "Nome";
+        Author author = new Author();
+        author.setName(authorName);
 
-        authorService.createAuthor(authorName);
+        authorService.saveAuthor(author);
         ArgumentCaptor<Author> argument = ArgumentCaptor.forClass(Author.class);
 
         Mockito.verify(authorRepository).save(argument.capture());

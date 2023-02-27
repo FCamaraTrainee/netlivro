@@ -2,9 +2,9 @@ package com.fcamara.netlivro.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class IllegalAuthorNameException extends RuntimeException {
+public class IllegalAuthorException extends RuntimeException {
     private HttpStatus statusCode = HttpStatus.BAD_REQUEST;
-    public IllegalAuthorNameException(String message) {
+    public IllegalAuthorException(String message) {
         super(message);
     }
 
