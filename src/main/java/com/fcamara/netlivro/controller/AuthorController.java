@@ -21,7 +21,7 @@ public class AuthorController {
     return ResponseEntity.ok(response);
   }
 
-  @DeleteMapping("/delete-author")
+  @DeleteMapping("/delete-author/{authorId}")
   private ResponseEntity<Void> deleteAuthor(@PathVariable UUID authorId) {
     authorService.deleteAuthor(authorId);
     return ResponseEntity.noContent().build();
