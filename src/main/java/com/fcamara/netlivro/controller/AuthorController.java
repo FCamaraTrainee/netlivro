@@ -1,5 +1,6 @@
 package com.fcamara.netlivro.controller;
 
+import com.fcamara.netlivro.exception.IllegalAuthorNameException;
 import com.fcamara.netlivro.model.Author;
 import com.fcamara.netlivro.service.AuthorService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ public class AuthorController {
   @PostMapping("/save-author")
   private ResponseEntity<Author> createAuthor(@RequestBody Author author) {
 
+    if (author.getName() == null) throw new IllegalAuthorNameException("Name must not be null");
 
     Author response = authorService.createAuthor(author.getName());
     return ResponseEntity.ok(response);
