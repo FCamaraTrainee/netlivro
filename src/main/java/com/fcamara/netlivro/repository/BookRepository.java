@@ -1,7 +1,6 @@
 package com.fcamara.netlivro.repository;
 
 import com.fcamara.netlivro.model.Book;
-import com.fcamara.netlivro.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
