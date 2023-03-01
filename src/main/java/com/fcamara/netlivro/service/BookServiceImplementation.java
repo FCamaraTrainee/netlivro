@@ -1,13 +1,9 @@
 package com.fcamara.netlivro.service;
 
-import com.fcamara.netlivro.model.Author;
 import com.fcamara.netlivro.model.Book;
-import com.fcamara.netlivro.model.Category;
 import com.fcamara.netlivro.repository.BookRepository;
-import net.bytebuddy.asm.Advice;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 @Service
@@ -25,8 +21,8 @@ public class BookServiceImplementation implements BookService {
     }
 
     @Override
-    public List<Book> findByAuthor(Author author) {
-        List<Book> book = bookRepository.findByAuthor(author);
+    public List<Book> findByAuthorId(UUID authorId) {
+        List<Book> book = bookRepository.findByAuthorId(authorId);
         return filterBookList(book);
     }
 
@@ -37,8 +33,8 @@ public class BookServiceImplementation implements BookService {
     }
 
     @Override
-    public List<Book> findByCategory(Category category) {
-        List<Book> book = bookRepository.findByCategoriesContaining(category);
+    public List<Book> findByCategoriesName(String category) {
+        List<Book> book = bookRepository.findByCategoriesNameContaining(category);
         return filterBookList(book);
     }
 
