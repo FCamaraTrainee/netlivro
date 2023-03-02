@@ -17,7 +17,7 @@ public class AuthorController {
   private final AuthorService authorService;
 
   @PostMapping("/save-author")
-  private ResponseEntity<Author> createAuthor(@RequestBody Author author) {
+  public ResponseEntity<Author> createAuthor(@RequestBody Author author) {
 
     if (author.getName() == null) throw new IllegalAuthorException("Name must not be null");
 
@@ -26,7 +26,7 @@ public class AuthorController {
   }
 
   @PutMapping("/edit-author")
-  private ResponseEntity<Author> editAuthor(@RequestBody Author author) {
+  public ResponseEntity<Author> editAuthor(@RequestBody Author author) {
 
     if (author.getId() == null) throw new IllegalAuthorException("Id must not be null");
 
@@ -35,7 +35,7 @@ public class AuthorController {
   }
 
   @DeleteMapping("/delete-author/{authorId}")
-  private ResponseEntity<Void> deleteAuthor(@PathVariable UUID authorId) {
+  public ResponseEntity<Void> deleteAuthor(@PathVariable UUID authorId) {
     authorService.deleteAuthor(authorId);
     return ResponseEntity.noContent().build();
   }

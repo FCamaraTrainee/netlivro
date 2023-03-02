@@ -48,7 +48,7 @@ public class BookController {
     }
 
     @PutMapping("/edit-book")
-    private ResponseEntity<Book> editAuthor(@RequestBody Book book) {
+    private ResponseEntity<Book> editBook(@RequestBody Book book) {
 
         if (book.getId() == null) throw new IllegalAuthorException("Id must not be null");
 
