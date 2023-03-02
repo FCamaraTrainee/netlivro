@@ -4,6 +4,7 @@ import com.fcamara.netlivro.model.Category;
 import com.fcamara.netlivro.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    @GetMapping("/{categoryId}")
+    @GetMapping("/find/{categoryId}")
     public ResponseEntity<Category> findCategoryById(@PathVariable UUID categoryId) {
         Category category = categoryService.findCategoryById(categoryId);
         return ResponseEntity.ok(category);
@@ -49,8 +50,8 @@ public class CategoryController {
         return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteCategory(@RequestParam UUID categoryId) {
+    @DeleteMapping("/delete/{categoryId}")
+    public ResponseEntity<Void> deleteCategory(@PathVariable UUID categoryId) {
         categoryService.deleteCategory(categoryId);
 
         return ResponseEntity.noContent().build();
